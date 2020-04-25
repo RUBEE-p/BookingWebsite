@@ -43,6 +43,7 @@
 		    	<%
 		    	return;
 		    }
+		
 		    
 			if ((newEmail.equals(""))&&(newPswd.equals(""))){
 				%>
@@ -52,48 +53,28 @@
 				</script>
 				<% 
 			} else {
-				String str = "SELECT * FROM Login e WHERE e.email='" + newEmail + "' and e.pass='" + newPswd + "'";
+				String str = "SELECT * FROM Login e WHERE e.username='" + newEmail + "' AND e.password='" + newPswd + "'";
 	
 				//Run the query against the database.
 				ResultSet result = stmt.executeQuery(str);
-				//System.out.println(str);
+			
 	
+				
 				if (result.next()) {
-					//out.print("login success! Welcome: ");
-					//out.print(result.getString("user_name"));
-					//Integer locked = result.getObject("locked") != null ? result.getInt("locked") : null;
-					//System.out.println(locked);
+					
+					
+					System.out.println(str);
 
-					if( result.getObject("locked") == null ){
-						session.setAttribute("user_name", result.getString("user_name"));
+						/* session.setAttribute("user_name", result.getString("user_name"));
 						session.setAttribute("user_email", newEmail);
+
+						System.out.println(str); */
 						%>
 						<script> 
 					 	    //alert("login success!");
-				    		window.location.href = "driverOrPassenger.jsp";
+				    		window.location.href = "main.html;";
 						</script>
 					<%
-					}
-					else if(result.getInt("locked")==0){
-						session.setAttribute("user_name", result.getString("user_name"));
-						session.setAttribute("user_email", newEmail);
-						session.setAttribute("user_type", "end_user");
-
-						%>
-						<script> 
-					 	   //alert("login success!");
-				    		window.location.href = "driverOrPassenger.jsp";
-						</script>
-					<%						
-					}
-					else if (result.getInt("locked")==1){
-						%>
-						<script> 
-					    	alert("Sorry, the user is locked and cannot log in now");
-					    	window.location.href = "login.jsp";
-						</script>
-						<%						
-					}
 					//close the connection.
 				} else {
 					out.print("User not found");

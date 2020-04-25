@@ -1,0 +1,70 @@
+body{
+    background-color: rgb(192, 135, 51);
+    height: 100%; width: 100%; margin: 0;
+  }
+  
+  .sidenav {
+      height: 100%; 
+      width: 0; 
+      position:fixed;
+      top: 0; 
+      left: 0;
+      background-color: rgb(49, 49, 51); 
+      padding-top: 20px;
+      z-index: 1;
+      transition: 0.5s;
+      overflow-x: hidden;
+      
+    }
+  
+  .sidenav a {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 15px;
+      color: #fffafa;
+      display: block;
+      transition: 0.3s;
+      
+      
+    }
+    
+    .sidenav a:link{
+        text-decoration: none;
+    }
+    .sidenav a:hover {
+      background-color: #4a7deb;
+      color: white;
+      text-decoration: none;
+    }
+
+    #main {
+        transition: margin-left .5s;
+        padding: 16px;
+      }
+
+      
+    #closeBtn{
+        margin-bottom: 10px;
+        margin-left: 200px;
+    }
+
+    .titleBar{
+        overflow: auto;
+        padding-left: 50px;
+        width: 100%;
+        border-bottom-width: 2px;
+        border-bottom-color: rgba(238, 236, 236, 0.651);
+        border-bottom-style: solid;
+    }
+
+
+    table {
+        table-layout: fixed;
+        position: relative;
+        width: 100%;
+        
+      }
+
+    
+  

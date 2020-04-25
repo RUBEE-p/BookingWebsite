@@ -70,7 +70,7 @@
 			}
 
 			// 3. check if email already used
-			String checkEmailStr = "SELECT * FROM Login e WHERE e.email='"
+			String checkEmailStr = "SELECT * FROM Login e WHERE e.username='"
 					+ newEmail + "'";
 			System.out.println(checkEmailStr);
 
@@ -111,7 +111,7 @@
 			}
 
 			//Make an insert statement for the Sells table:
-			String insert = "INSERT INTO login (email, password, acctNumber)"
+			String insert = "INSERT INTO login (username, password, acctNumber)"
 					+ " VALUES (?, ?, ?)";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
