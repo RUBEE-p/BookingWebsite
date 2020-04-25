@@ -136,6 +136,7 @@
 	%>
 	<script>
 		alert("Congratulation! Your new account is created!");
+		window.location.href = "main.html";
 	</script>
 	<%
 		} catch (Exception e) {
