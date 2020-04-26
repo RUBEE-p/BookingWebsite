@@ -69,10 +69,12 @@
 					System.out.println(str); */
 					User u = new User(result.getString("username"), result.getString("password"),
 							result.getString("acctNumber"));
+					CurrentUser cu = new CurrentUser(u);
+					System.out.println(CurrentUser.getCurrentUser());
 	%>
 	<script>
 		//alert("login success!");
-		window.location.href = "main.html;";
+		window.location.href = "main.jsp";
 	</script>
 	<%
 		//close the connection.

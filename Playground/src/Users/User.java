@@ -32,4 +32,9 @@ public class User {
 	public void setAcctNumber(String acctNumber) {
 		this.acctNumber = acctNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", password=" + password + ", acctNumber=" + acctNumber + "]";
+	}
 }
