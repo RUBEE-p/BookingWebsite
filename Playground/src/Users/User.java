@@ -1,4 +1,4 @@
-
+package Users;
 public class User {
 
 	private String email, password, acctNumber;

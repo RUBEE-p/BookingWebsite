@@ -1,4 +1,4 @@
-
+package Users;
 public class CurrentUser {
 
 	static User current;
