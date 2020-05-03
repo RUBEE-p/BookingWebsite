@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Update Customer Information</title>
-<link rel="stylesheet" type="text/css" href="css/EditCustInfo.css">
+<link rel="stylesheet" type="text/css" href="../css/EditCustInfo.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script

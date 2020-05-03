@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Sales Report Page</title>
-<link href="css/AdminSalesReport.css" rel="stylesheet" type="text/css">
+<link href="../css/AdminSalesReport.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script

@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Reservations Page</title>
-<link href="css/AdminReservations.css" rel="stylesheet" type="text/css">
+<link href="../css/AdminReservations.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -76,6 +76,7 @@
 				</div>
 			</form>
 		</div>
+		
 		<h2>
 			Flight:
 			<%=FlightNumber%></h2>
@@ -170,7 +171,7 @@
 					</div>
 				</div>
 			</form>
-		</div>
+		</div>	
 
 		<h2>
 			Customer:
@@ -233,6 +234,17 @@
 
 			</tbody>
 		</table>
+		
+		<%
+		
+			name_results.close();
+			String topCustomerQuery = "Select FirstName, LastName, Max(Fee) as TotalPrice From (Select FirstName, LastName, sum(BookingFee) as Fee From Reservation join Customer using(acctNumber) Group by acctNumber) as r2;";
+			ResultSet topCustomerResults = stmt.executeQuery(topCustomerQuery);
+			topCustomerResults.next();
+		
+		%>
+		
+		<h2>Top Customer: <%=" " + topCustomerResults.getString("FirstName") + " " + topCustomerResults.getString("LastName") + " ($" + topCustomerResults.getString("TotalPrice") + ")"%></h2>
 
 		<%
 			con.close();

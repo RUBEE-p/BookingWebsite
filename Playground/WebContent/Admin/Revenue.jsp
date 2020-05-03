@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Revenue Page</title>
-<link href="css/AdminRevenue.css" rel="stylesheet" type="text/css">
+<link href="../css/AdminRevenue.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -170,8 +170,8 @@
 			style="width: 200px; margin-top: 100px; margin-bottom: 50px;">
 
 			<%
-			total.close();
-				String cityForm;
+				total.close();
+			String cityForm;
 			if (request.getParameter("cityForm") != null) {
 				cityForm = request.getParameter("cityForm");
 
@@ -187,15 +187,14 @@
 			<form action=Revenue.jsp id="cityForm">
 				<select class="form-control" name="cityForm"
 					onchange="$('#cityForm').submit();">
+
+					<option value="" disabled selected><%=cityForm%></option>
+
 					<%
 						while (cityResults.next()) {
 					%>
 
-
-					<option value="" disabled selected><%=cityForm%></option>
 					<option value=<%=cityResults.getString("city")%>><%=cityResults.getString("city")%></option>
-
-
 
 					<%
 						}
@@ -208,20 +207,23 @@
 		<table class="table" style="width: 100%" id="custInfoTable">
 			<tr>
 				<th>Reservation Number</th>
-				<th>Passenger(s)</th>
-				<th>Legs</th>
-				<th>Total Fare</th>
-				<th>Fare Restrictions</th>
 				<th>Booking Fee</th>
-				<th>Customer Rep.</th>
+				<th>Total Fare</th>
+				<th>Reservation Date</th>
+				<th>Passenger(s)</th>
+				<th>Fare_Restriction</th>
+				<th>CustRep</th>
+				<th>Account Number</th>
+				<th>Flight Number</th>
+				<th>Airline ID</th>
+				<th>Departing Airport ID</th>
+				<th>Arriving Airport ID</th>
 			</tr>
 
 			<%
-			cityResults.close();
-			System.out.println(cityForm);
-			String cityResultsQ = "Select * from Reservation natural join Airport Where City = '" + cityForm + "';";
+				cityResults.close();
+			String cityResultsQ = "Select * from Reservation r, Airport a Where a.City = '" + cityForm + "' and (a.Airport_ID = r.Dept_Airport_ID or a.Airport_ID = r.Arrive_Airport_ID);";
 			ResultSet cityRevResults = stmt.executeQuery(cityResultsQ);
-			
 			%>
 			<tbody>
 
@@ -250,10 +252,9 @@
 					}
 
 				cityRevResults.close();
-				String cityRevenueQ = "SELECT SUM(BookingFee) from Reservation natural join Airport Where City = '" + cityForm + "';";
+				String cityRevenueQ = "SELECT SUM(r.BookingFee) from Reservation r, Airport a Where a.City = '" + cityForm + "' and (a.Airport_ID = r.Dept_Airport_ID or a.Airport_ID = r.Arrive_Airport_ID);";
 				ResultSet citytotal = stmt.executeQuery(cityRevenueQ);
 				citytotal.next();
-
 				String cityRevenue = "";
 
 				if (citytotal.getObject(1) != null) {
@@ -268,8 +269,8 @@
 			Total Revenue:<%=cityRevenue%></h3>
 
 		<%
-		citytotal.close();
-			//Close Connection
+			citytotal.close();
+		//Close Connection
 		con.close();
 		} catch (Exception e) {
 
